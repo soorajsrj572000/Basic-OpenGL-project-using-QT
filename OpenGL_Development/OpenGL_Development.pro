@@ -14,6 +14,7 @@ SOURCES += \
     openglwidget.cpp
 
 HEADERS += \
+    Constants.h \
     mainwindow.h \
     openglwidget.h
 
