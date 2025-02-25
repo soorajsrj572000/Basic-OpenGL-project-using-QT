@@ -12,7 +12,7 @@ OpenGLWidget::~OpenGLWidget()
 void OpenGLWidget::initializeGL()
 {
     initializeOpenGLFunctions();
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
 void OpenGLWidget::resizeGL(int w, int h)
@@ -23,4 +23,9 @@ void OpenGLWidget::resizeGL(int w, int h)
 void OpenGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-0.5f, -0.5f);
+    glVertex2f( 0.0f,  0.5f);
+    glVertex2f( 0.5f, -0.5f);
+    glEnd();
 }

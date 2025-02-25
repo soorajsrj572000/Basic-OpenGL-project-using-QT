@@ -1,5 +1,4 @@
-QT       += core gui opengl
-QT += openglwidgets
+QT       += core gui opengl openglwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -20,6 +19,8 @@ HEADERS += \
 
 FORMS += \
     mainwindow.ui
+
+LIBS += -lopengl32
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
