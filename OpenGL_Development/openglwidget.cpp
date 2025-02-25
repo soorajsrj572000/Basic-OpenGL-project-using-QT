@@ -9,6 +9,18 @@ void OpenGLWidget::initializeGL()
 {
     initializeOpenGLFunctions();
     glClearColor(ZERO, ZERO, ZERO, ZERO);
+
+    GLfloat vertexPosition[6] =
+    {
+        MINUS_POINT_FIVE,   MINUS_POINT_FIVE,
+        ZERO,               POINT_FIVE,
+        POINT_FIVE,         MINUS_POINT_FIVE
+    };
+
+    GLuint buffer;
+    glGenBuffers(1, &buffer);
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), vertexPosition, GL_STATIC_DRAW);
 }
 
 void OpenGLWidget::resizeGL(int w, int h)
@@ -19,12 +31,5 @@ void OpenGLWidget::resizeGL(int w, int h)
 void OpenGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glBegin(GL_TRIANGLES);
-    glColor3d(ONE, ZERO, ZERO);
-    glVertex2f(MINUS_POINT_FIVE, MINUS_POINT_FIVE);
-    glColor3d(ZERO, ONE, ZERO);
-    glVertex2f(ZERO, POINT_FIVE);
-    glColor3d(ZERO, ZERO, ONE);
-    glVertex2f(POINT_FIVE, MINUS_POINT_FIVE);
-    glEnd();
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 }
